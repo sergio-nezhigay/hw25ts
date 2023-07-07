@@ -1,0 +1,29 @@
+.contactRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+}
+
+.names span {
+  margin-bottom: 5px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d32f2f;
+}
