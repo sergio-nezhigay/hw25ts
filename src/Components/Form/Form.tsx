@@ -1,18 +1,16 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { nanoid } from "nanoid";
 import "./Form.css";
 
 interface FormProps {
-  isOpen: boolean;
   onCancel: () => void;
   addContact: (newContact: any) => void;
 }
 
-export default function Form({ isOpen, onCancel, addContact }: FormProps) {
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export default function Form({ onCancel, addContact }: FormProps) {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.currentTarget;
-
     const newContact = {
       id: nanoid(),
       name: (target.elements.namedItem("name") as HTMLInputElement).value,
@@ -20,7 +18,6 @@ export default function Form({ isOpen, onCancel, addContact }: FormProps) {
         .value,
       phone: (target.elements.namedItem("phone") as HTMLInputElement).value,
     };
-
     addContact(newContact);
     target.reset();
   };
@@ -36,6 +33,7 @@ export default function Form({ isOpen, onCancel, addContact }: FormProps) {
 
         <label htmlFor="phone">Phone</label>
         <input type="text" id="phone" name="phone" required />
+
         <div className="buttonContainer">
           <button type="submit">Add</button>
           <button type="button" onClick={onCancel}>

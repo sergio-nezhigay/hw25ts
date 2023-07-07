@@ -9,7 +9,8 @@ export default function Contacts() {
   const [contacts, setContacts] = useState<Array<any>>([]); // Replace 'any' with the appropriate type for contacts
   const [isOpen, setIsOpen] = useState(false);
 
-  const deleteContact = (id: number) => { // Add type annotation for 'id'
+  const deleteContact = (id: number) => {
+    // Add type annotation for 'id'
     const filteredContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(filteredContacts);
   };
@@ -18,7 +19,8 @@ export default function Contacts() {
     setIsOpen(false);
   };
 
-  const addContact = (newContact: any) => { // Replace 'any' with the appropriate type for newContact
+  const addContact = (newContact: any) => {
+    // Replace 'any' with the appropriate type for newContact
     setIsOpen(false);
     setContacts([...contacts, newContact]);
   };
@@ -42,7 +44,7 @@ export default function Contacts() {
       >
         Add contact
       </button>
-      <Form isOpen={isOpen} onCancel={onCancel} addContact={addContact} />
+      {isOpen && <Form onCancel={onCancel} addContact={addContact} />}
     </>
   );
 }
